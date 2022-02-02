@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+* {
+  box-sizing: border-box;
+  transition: all 0.15s ease-in-out;
+}
+
+a {
+  cursor: pointer;
+}
+
+body {
+  background: #fafafa;
+  margin: 50px auto;
+  padding: 0;
+  border: 0;
+  width: 800px;
+  max-width: 95%;
+  font-family: "Cabin", sans-serif;
+}
+body section {
+  background: #ffffff;
+  position: relative;
+  border-radius: 2px;
+  margin: 10px 0;
+  padding: 0;
+  border: 1px solid #dbdbdb;
+}
+body section .header {
+  display: flex;
+  justify-content: space-between;
+}
+body section .header .user {
+  margin: 5px;
+  padding: 7px;
+  border: 0;
+}
+body section .header .param {
+  cursor: pointer;
+  margin: 6px;
+  padding: 6px;
+  border: 0;
+  border-radius: 4px;
+}
+body section .header .param:hover {
+  background: rgba(0, 0, 0, 0.09);
+}
+body section .img-container img {
+  width: 100%;
+}
+body section .like-checkbox {
+  display: none;
+}
+body section .toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+body section .toolbar .like,
+body section .toolbar .comment,
+body section .toolbar .transfer,
+body section .toolbar .signet {
+  margin: 8px;
+  padding: 0;
+  border: 0;
+}
+body section .toolbar .signet {
+  position: absolute;
+  right: 0;
+}
+body section .description {
+  margin: 6px;
+  padding: 6px;
+  border: 0;
+  font-size: 16px;
+}
+body section .description strong {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.check-like {
+  animation-duration: 0.2s;
+  animation-name: like;
+  fill: #1f81ba;
+}
+
+.check-path {
+  fill: #1f81ba;
+  background: #1f81ba;
+}
+
+/* navbar */
+.navbar-default {
+	background-color: #303f9f;
+	border-color: #303f9f;
+	border-radius: 0px;
+}
+/* Title */
+.navbar-default .navbar-brand {
+	color: #fff;
+	font-family: 'Lobster', cursive;
+	font-size: 22px;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+	color: #b2ff59;
+}
+/* Link */
+.navbar-default .navbar-nav > li > a {
+	color: #fff;
+	margin: 2px;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+	color: #c0ca33;
+	background-color: #666ad1;
+	border-radius: 25px;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+	color: #c0ca33;
+	background-color: #666ad1;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+	color: #c0ca33;
+	background-color: #D5D5D5;
+}
+
+/* Mobile version */
+.navbar-default .navbar-toggle {
+	border-color: #DDD;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+	background-color: #666ad1;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		color: #777;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color: #333;
+	}
+}
+
+button.navbar-btn{
+	margin-top: 8px;
+} 
+
+.btn-custom {
+	color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 120%;
+  font-style:inherit;
+
+}
+
+.post-profile-image {
+  height: 80%;
+  width: 20%;
+  border-radius: 50%;
+  margin-right: 4%;
+}
+
+.btn.btn-custom {
+  color: rgb(0, 0, 0);
+	width: 30%;
+	height: 10%;
+	border-radius: 20px;
+  font-weight: 300;
+	color: #1565c0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.btn.btn-custom:hover {
+	color: #fff;
+	font-weight: 600;
+	box-shadow: 3px 8px 10px #484848;
+	transform: translateY(-3px);
+	transition: all 0.3s ease 0s;
+}
+.btn.btn-custom:focus {
+	outline: none;
+}
+
+#sign-up:hover {
+	background-color: #f57f17;
+	text-decoration: none;
+}
+
+#login:hover {
+	background-color: #d50000;
+	text-decoration: none;
+}
+
+.btn-primary {
+	background-color: #2979ff;
+}
+
+h1 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+}
+
+#slogan {
+	font-family: 'Dancing Script', cursive;
+	font-size: 30px;
+}
+
+.jumbotron {
+	background-color: #e1f5fe;
+}
+
+.override-nav-btn {
+	color: #fff !important;
+}
+
+.btn.btn-custom.override-nav-btn {
+	background-color: #303f9f !important;
+}
+
+.btn.btn-custom.override-nav-btn:hover {
+	background-color: #303f9f;
+	border: 1px solid #fff;
+	transition: 0;
+	transform: translateY(0px);
+	box-shadow: 0px 0px 0px;
+	font-weight: normal;
+}
+
+.btn.btn-custom.override-nav-btn:focus {
+	background-color: #edeef3;
+}
+
+@keyframes like {
+  from {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.4);
+  }
+  to {
+    transform: scale(1);
+  }
+}

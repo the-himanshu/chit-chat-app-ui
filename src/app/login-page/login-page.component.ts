@@ -21,9 +21,7 @@ export class LoginPageComponent implements OnInit {
 
   async onSubmit(): Promise<any> {
     console.warn('Your order has been submitted', this.loginForm.value);
-    console.log('sf : ', this.loginForm.value);
     const backendUrl: any = environment.backendUrl;
-    console.log('BACKEND URL : ', backendUrl);
     axios
       .post(`${backendUrl}/authentication`, {
         strategy: 'local',
@@ -32,15 +30,15 @@ export class LoginPageComponent implements OnInit {
       })
       .then((res) => {
         if (res.status == 201) {
-          console.log('successfully authenticated');
+          localStorage.setItem('authToken', res.data.accessToken);
+          localStorage.setItem('1', res.data.user);
           this.loginForm.reset();
-          this.router.navigate(['/mainpage']);
+          this.router.navigate(['/mainpage', {user: JSON.stringify(res.data.user)}]);
         }
       })
       .catch((err) => {
-        console.log("123scsdsv : ",err);  
-        console.log('not authenticated');
-        this.router.navigate(['/error', {error: err}]);
+        err = err.toString()
+        this.router.navigate(['/error', {error: err, errorCode: err.slice(-3)}]);
       });
   }
 }

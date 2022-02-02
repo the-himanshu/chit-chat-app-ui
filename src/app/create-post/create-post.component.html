@@ -1,0 +1,9 @@
+<div class="login-page">
+    <div class="form">
+      <form [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="content" placeholder="write a post"/>
+        <button class="button" type="submit">Create Post</button>
+      </form>
+      <button class="button" type="submit">Go back</button>
+    </div>
+  </div>

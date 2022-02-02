@@ -1,0 +1,381 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+* {
+  box-sizing: border-box;
+  transition: all 0.15s ease-in-out;
+}
+
+a {
+  cursor: pointer;
+}
+
+body {
+  background: #fafafa;
+  margin: 50px auto;
+  padding: 0;
+  border: 0;
+  width: 800px;
+  max-width: 95%;
+  font-family: "Cabin", sans-serif;
+  border-style: solid;
+}
+body section {
+  background: #ffffff;
+  position: relative;
+  border-radius: 2px;
+  margin: 10px 0;
+  padding: 0;
+  border: 1px solid #dbdbdb;
+}
+body section .header {
+  display: flex;
+  justify-content: space-between;
+}
+body section .header .user {
+  margin: 5px;
+  padding: 7px;
+  border: 0;
+}
+body section .header .param {
+  cursor: pointer;
+  margin: 6px;
+  padding: 6px;
+  border: 0;
+  border-radius: 4px;
+}
+body section .header .param:hover {
+  background: rgba(0, 0, 0, 0.09);
+}
+body section .img-container img {
+  width: 100%;
+}
+body section .like-checkbox {
+  display: none;
+}
+body section .toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+body section .toolbar .like,
+body section .toolbar .comment,
+body section .toolbar .transfer,
+body section .toolbar .signet {
+  margin: 8px;
+  padding: 0;
+  border: 0;
+}
+body section .toolbar .signet {
+  position: absolute;
+  right: 0;
+}
+body section .description {
+  margin: 6px;
+  padding: 6px;
+  border: 0;
+  font-size: 16px;
+}
+body section .description strong {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.check-like {
+  animation-duration: 0.2s;
+  animation-name: like;
+  fill: #1f81ba;
+}
+
+.check-path {
+  fill: #1f81ba;
+  background: #1f81ba;
+}
+
+fieldset{
+  padding:10px;
+  background:#69bdf4;
+}
+.form_grp{
+  margin-bottom:10px;
+}
+
+.container{margin-top:15px;}
+
+.comment{ display: block; transition: all 1s;}
+
+.commentClicked{min-height: 0px; border: 1px solid #eee; border-radius: 5px; padding: 5px 10px}
+
+textarea{width: 100%; border: none; background: #E8E8E8; padding: 5px 10px; height: 50%;border-radius: 5px 5px 0px 0px; border-bottom: 2px solid #016BA8; transition: all 0.5s;margin-top: 15px;}
+
+button.primaryContained{ background: #016ba8; color: #fff; padding: 10px 10px; border: none; margin-top: 0px; cursor: pointer; text-transform: uppercase; letter-spacing: 4px; box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.25); transition: 1s all; font-size: 10px; border-radius: 5px;}
+
+button.primaryContained:hover{ background: #9201A8; }
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.25rem;
+}
+
+.commentBoxfloat {
+  margin-top: 2%;
+  width: 100%;
+}
+
+.avatar-img,
+.avatar-initials,
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.avatar-img {
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.avatar-initials {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #fff;
+  line-height: 0;
+  background-color: #a0aec0;
+}
+
+.avatar-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #a0aec0
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='%23fff' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z'/%3e%3c/svg%3e")
+    no-repeat center/1.75rem;
+}
+
+.avatar-indicator {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20%;
+  height: 20%;
+  display: block;
+  background-color: #a0aec0;
+  border-radius: 50%;
+}
+
+.avatar-group {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.avatar-group .avatar + .avatar {
+  margin-left: -0.75rem;
+}
+
+.avatar-group .avatar:hover {
+  z-index: 1;
+}
+
+.avatar-sm,
+.avatar-group-sm > .avatar {
+  width: 2.125rem;
+  height: 2.125rem;
+  font-size: 1rem;
+}
+
+.avatar-sm .avatar-placeholder,
+.avatar-group-sm > .avatar .avatar-placeholder {
+  background-size: 1.25rem;
+}
+
+.avatar-group-sm > .avatar + .avatar {
+  margin-left: -0.53125rem;
+}
+
+.avatar-lg,
+.avatar-group-lg > .avatar {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.5rem;
+}
+
+.avatar-lg .avatar-placeholder,
+.avatar-group-lg > .avatar .avatar-placeholder {
+  background-size: 2.25rem;
+}
+
+.avatar-group-lg > .avatar + .avatar {
+  margin-left: -1rem;
+}
+
+.avatar-light .avatar-indicator {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
+}
+
+.avatar-group-light > .avatar {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
+}
+
+.avatar-dark .avatar-indicator {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+.avatar-group-dark > .avatar {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Font not working in <textarea> for this version of bs */
+
+textarea {
+  font-family: inherit;
+}
+
+.post{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid #dfdfdf;
+  margin-top: 40px;
+}
+
+.info{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.info .username{
+  width: auto;
+  font-weight: bold;
+  color: #000;
+  font-size: 16px;
+  margin-left: 4%;
+  margin-top: 6%;
+}
+
+.info .options{
+  height: 10px;
+  cursor: pointer;
+}
+
+.info .user{
+  display: flex;
+  align-items: center;
+}
+
+.post-image{
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.post-content{
+  width: 100%;
+  padding: 20px;
+  border-style:solid;
+}
+
+.comment-content{
+  width: 100%;
+  padding: 20px;
+}
+
+.likes{
+  font-weight: bold;
+}
+
+.description{
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.description span{
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.post-time{
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+}
+
+.comment-wrapper{
+  width: 100%;
+  height: 205;
+  border-radius: 1px solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-wrapper .icon{
+  height: 30px;
+}
+
+.comment-box{
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  margin-left: -25%;
+  border-style: solid;
+}
+
+.comment-btn,
+.action-btn{
+  width: 0%;
+  height: 100%;
+  margin-left: 4%;
+  background: none;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  font-size: 16px;
+  color: rgb(0, 162, 255);
+  opacity: 0.5;
+}
+
+.reaction-wrapper{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  margin-top: -20px;
+  align-items: center;
+}
+
+.reaction-wrapper .icon{
+  height: 25px;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.reaction-wrapper .icon.save{
+  margin-left: auto;
+}
+
+
+@keyframes like {
+  from {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.4);
+  }
+  to {
+    transform: scale(1);
+  }
+}

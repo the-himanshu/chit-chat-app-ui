@@ -8,11 +8,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ShowErrorComponent implements OnInit {
   errorData = 'This is the default error'
+  errorCode = 0
   constructor(private router: Router, private dataRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.errorData = this.dataRoute.snapshot.params['error'];
-    console.log("error : ",this.errorData);
-  }
-
+    this.errorCode = this.dataRoute.snapshot.params['errorCode'];
+   }
 }

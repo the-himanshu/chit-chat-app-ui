@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+
+body {
+	background-color: #eeeeee;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+div {
+	height: 100vh;
+	width: 100%;
+}
+
+div > nav {
+	height: auto;
+	min-height: 50px;
+	max-height: 100px;
+	width: 100%;
+	background-color: white;
+	color: black;
+}
+
+div > nav > div {
+	margin: auto;
+	display: flex;
+	width: 80%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: black;
+}
+
+div > nav > div > div {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div > nav > div > div:nth-child(1) {
+	font-family: "Shadows Into Light", cursive;
+	text-transform: uppercase;
+}
+
+.div3 {
+	text-align: right;
+	display: flex;
+	align-items: center;
+}
+
+.div3 > span {
+	margin: 0 10px;
+}
+
+.search-area {
+	border: 1px solid #dadbda;
+	border-radius: 3px;
+	transition: ease 1s 0s;
+	background-color: #fbfbfa;
+	text-align: center;
+}
+
+.search-area:focus {
+	outline: none;
+	text-align: left;
+}
+
+@media only screen and (max-width: 680px) {
+	div > nav > div > div:nth-child(2) {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 360px) {
+	div > nav > div > div:nth-child(1) {
+		margin-bottom: 10px;
+		height: 30px;
+	}
+	div > nav > div {
+		display: flex;
+		flex-direction: column;
+	}
+}

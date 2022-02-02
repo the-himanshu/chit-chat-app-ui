@@ -1,0 +1,54 @@
+<app-header [user]="stringifiedUser"></app-header>
+<div *ngIf='post'>
+<section>
+  <div class="wrapper" style="border-style: 2%;">
+    <div class="left-col">
+        <div class="post">
+            <div class="info">
+                <div class="user">
+                    <div class="profile-pic"><img style="height:90%; width:90%; border-radius:50%;" src="{{ post.user.avatar }}" alt=""></div>
+                    <p class="username">{{ post.user.username }}</p>
+                   </div>
+                <img src="" class="options" alt="">
+            </div>
+            <div class="post-content">
+              <p class="description"><span>{{ post.user.username }}</span>{{ post.content }}</p>
+              <p class="post-time">{{ post.createdAt }}</p>
+              <p class="likes">{{ post.likes }} Likes</p>
+            </div>
+            <p style="margin-left: 4%"><b>Total Comments: {{ post.commentCount }}</b></p>
+            <div class="comment-wrapper">
+                <div class="commentBoxfloat">
+                  <form id="cmnt" [formGroup]="commentForm" (ngSubmit)="onSubmit(post)">
+                    <fieldset>
+                      <div class="form_grp">
+                        <textarea id="userCmnt" formControlName="content" placeholder="Write your comment here. You can Edit and Delete options. Just Hover in Your comment, you see the both buttons"></textarea>        
+                      </div>
+                      <div class="form_grp">
+                      <button class="btn btn-primary" type="submit" id="submit">Submit</button>
+                      </div>
+                    </fieldset>
+                  </form>
+
+                 </div>
+
+            </div>
+            <div *ngFor="let comment of post.comments">
+            <div class="comment-content">
+              <h6 class="likes">{{ comment.creatorName }}</h6>
+              <p><span>{{ comment.content }}</span><br><i>{{ comment.likes }} Likes</i></p>
+              <p class="post-time">{{ comment.createdAt }}</p>
+          </div>
+          </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- CSS only -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+  crossorigin="anonymous"
+/>
+</div>
