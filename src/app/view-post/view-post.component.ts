@@ -52,6 +52,10 @@ export class ViewPostComponent implements OnInit {
       });
   }
 
+  async GoHome(): Promise<any> {
+    this.router.navigate(['/mainpage', {user: this.stringifiedUser}]);
+  }
+
   async onSubmit(post: any): Promise<any> {
     console.warn('Your order has been submitted', this.commentForm.value);
     axios

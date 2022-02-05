@@ -1,4 +1,6 @@
-<app-header [user]="stringifiedUser"></app-header>
+<div *ngIf="stringifiedUser">
+  <app-header [user]="stringifiedUser"></app-header>
+</div>
 <div *ngIf='post'>
 <section>
   <div class="wrapper" style="border-style: 2%;">
@@ -17,6 +19,7 @@
               <p class="likes">{{ post.likes }} Likes</p>
             </div>
             <p style="margin-left: 4%"><b>Total Comments: {{ post.commentCount }}</b></p>
+            <button class="btn btn-success" id="home" style="margin-left: 2%;" (click)="GoHome()">Go Home</button>
             <div class="comment-wrapper">
                 <div class="commentBoxfloat">
                   <form id="cmnt" [formGroup]="commentForm" (ngSubmit)="onSubmit(post)">
@@ -26,9 +29,9 @@
                       </div>
                       <div class="form_grp">
                       <button class="btn btn-primary" type="submit" id="submit">Submit</button>
-                      </div>
-                    </fieldset>
-                  </form>
+                    </div>
+                  </fieldset>
+                </form>
 
                  </div>
 

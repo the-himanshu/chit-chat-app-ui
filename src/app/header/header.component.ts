@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   @Input() user!: any;
-
+  
   constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   async backToHome(user: any) {
     this.router.navigate(['/mainpage', {user: JSON.stringify(user)}])

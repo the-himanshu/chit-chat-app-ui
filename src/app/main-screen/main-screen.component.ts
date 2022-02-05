@@ -21,7 +21,7 @@ export class MainScreenComponent implements OnInit {
   constructor(private modalService: NgbModal, private router: Router, private dataRoute: ActivatedRoute) {}
 
   async ngOnInit(): Promise<any> {
-    this.stringifiedUser = this.dataRoute.snapshot.params['user']
+    this.stringifiedUser = await this.dataRoute.snapshot.params['user']
     this.user = JSON.parse(this.stringifiedUser)
     const backendUrl: any = environment.backendUrl;
     const authToken = localStorage.getItem('authToken') || 'abc';
@@ -82,13 +82,34 @@ export class MainScreenComponent implements OnInit {
 
   async increaseLikes(id: any, likes: any) {
     axios
-      .patch(`${this.backendUrl}/posts/${id}`, { likes: likes+1}, {
+      .patch(`${this.backendUrl}/posts/${id}`, { likes: likes+1, liked: true}, {
         headers: {
           Authorization: this.authToken,
         },
       })
       .then((res) => {
-        this.ngOnInit();
+        const objIndex = this.posts.findIndex((obj => obj.id == id));
+        this.posts[objIndex].isLiked = true;
+        this.posts[objIndex].likes = this.posts[objIndex].likes + 1 
+        //this.ngOnInit();
+      })
+      .catch((err) => {
+        this.showErrorPage(err);
+      });
+  }
+
+  async decreaseLikes(id: any, likes: any) {
+    axios
+      .patch(`${this.backendUrl}/posts/${id}`, { likes: likes-1, disliked: true}, {
+        headers: {
+          Authorization: this.authToken,
+        },
+      })
+      .then((res) => {
+        const objIndex = this.posts.findIndex((obj => obj.id == id));
+        this.posts[objIndex].isLiked = false;
+        this.posts[objIndex].likes = this.posts[objIndex].likes - 1 
+        //this.ngOnInit();
       })
       .catch((err) => {
         this.showErrorPage(err);

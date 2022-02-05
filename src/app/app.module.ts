@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     HeaderComponent,
     CreatePostComponent,
     ViewPostComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
       { path: 'error', component: ShowErrorComponent, data: {error: 'error here', errorCode: '404'} },
       { path: 'post/:postId', component: ViewPostComponent, data: {user: 'user'} },
       { path: 'profile/:profileId', component: ProfilePageComponent, data: {currentUser: 'user info'} },
+      { path: 'profile/editProfile/:profileId', component: EditProfileComponent, data: {currentUser: 'user info'} },
     ])
   ],
   providers: [

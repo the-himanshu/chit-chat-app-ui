@@ -1,0 +1,9 @@
+<div class="login-page">
+    <div class="form">
+      <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="content" placeholder="write your bio"/>
+        <button class="button" type="submit">Change Bio</button>
+      </form>
+      <button class="button" type="submit">Go back</button>
+    </div>
+  </div>
