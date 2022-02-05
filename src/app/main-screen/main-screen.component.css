@@ -91,7 +91,7 @@ body section .description strong {
 
 /* navbar */
 .navbar-default {
-	background-color: #303f9f;
+	background-color: #6975bd;
 	border-color: #303f9f;
 	border-radius: 0px;
 }
@@ -170,13 +170,14 @@ button.navbar-btn{
 }
 
 .btn.btn-custom {
-  color: rgb(0, 0, 0);
+  color: black;
 	width: 30%;
 	height: 10%;
 	border-radius: 20px;
-  font-weight: 300;
-	color: #1565c0;
+  font-weight: 500;
+	color: black;
 	font-family: 'Open Sans', sans-serif;
+  text-decoration: solid;
 }
 
 .btn.btn-custom:hover {

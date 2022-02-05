@@ -10,13 +10,15 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 export class ProfilePageComponent implements OnInit {
   currentUser: any;
+  stringifiedUser: any;
   closeResult: any;
 
   constructor(private modalService: NgbModal, private router: Router, private dataRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.currentUser = this.dataRoute.snapshot.params['currentUser']
-    this.currentUser = JSON.parse(this.currentUser)
+    this.currentUser = this.dataRoute.snapshot.params['currentUser'];
+    this.stringifiedUser = this.dataRoute.snapshot.params['currentUser'];
+    this.currentUser = JSON.parse(this.currentUser);
   }
 
   async editProfile(user: any) {

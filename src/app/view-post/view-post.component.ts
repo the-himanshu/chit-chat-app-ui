@@ -52,7 +52,10 @@ export class ViewPostComponent implements OnInit {
       });
   }
 
-  async GoHome(): Promise<any> {
+  async GoHome(user: any): Promise<any> {
+    if(!this.stringifiedUser) {
+      this.stringifiedUser = JSON.stringify(user)
+    }
     this.router.navigate(['/mainpage', {user: this.stringifiedUser}]);
   }
 

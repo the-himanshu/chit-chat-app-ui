@@ -19,7 +19,7 @@
               <p class="likes">{{ post.likes }} Likes</p>
             </div>
             <p style="margin-left: 4%"><b>Total Comments: {{ post.commentCount }}</b></p>
-            <button class="btn btn-success" id="home" style="margin-left: 2%;" (click)="GoHome()">Go Home</button>
+            <button class="btn btn-success" id="home" style="margin-left: 2%;" (click)="GoHome(post.user)">Go Home</button>
             <div class="comment-wrapper">
                 <div class="commentBoxfloat">
                   <form id="cmnt" [formGroup]="commentForm" (ngSubmit)="onSubmit(post)">
