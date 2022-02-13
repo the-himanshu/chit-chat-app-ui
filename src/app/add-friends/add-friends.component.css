@@ -1,0 +1,117 @@
+:root {
+    --surface1: hsl(0, 0%, 90%);
+    --surface2: hsl(0, 0%, 100%);
+  
+    --text1: hsl(0, 0%, 20%);
+  }
+  
+  html {
+    height: 100%;
+    width: 100%;
+  }
+  
+  body {
+    min-height: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 2rem;
+  
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    place-content: center;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    background-color: hsl(0, 0%, 90%);
+    background-color: var(--surface1);
+    color: hsl(0, 0%, 20%);
+    color: var(--text1);
+  }
+  
+  .overflow-x {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 1ex;
+    background-color: hsl(0, 0%, 100%);
+    background-color: var(--surface2);
+    padding: 2rem;
+  }
+  
+  .horizontal-friends-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 10ch;
+    grid-gap: 2rem;
+    gap: 2rem
+  }
+  
+  .horizontal-friends-list > figure {
+      display: grid;
+      grid-gap: 1ex;
+      gap: 1ex;
+      margin: 0;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      transition: transform .2s ease-in-out
+    }
+  
+  .horizontal-friends-list > figure:hover {
+        transform: scale(1.1);
+      }
+  
+  [dir="ltr"] .horizontal-friends-list > figure:last-child::after {
+        bottom: -2rem;
+        right: -2rem;
+  }
+  
+  [dir="rtl"] .horizontal-friends-list > figure:last-child::after {
+        bottom: -2rem;
+        left: -2rem;
+  }
+  
+  .horizontal-friends-list > figure:last-child::after {
+        content: "";
+        position: absolute;
+        width: 2rem;
+        height: 100%;
+        right: -2rem;
+        width: 2rem;
+        height: 100%;
+      }
+  
+  .horizontal-friends-list > figure > picture {
+        display: inline-block;
+        width: 10ch;
+        height: 10ch;
+        border-radius: 50%;
+  
+        background: 
+          radial-gradient(hsla(0, 0%, 0%, 0.15) 60%, transparent 0),
+          radial-gradient(white 65%, transparent 0),
+          linear-gradient(to top right, orange, deeppink)
+      }
+  
+  .horizontal-friends-list > figure > picture > img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          -o-object-fit: cover;
+             object-fit: cover;
+          -webkit-clip-path: circle(42%);
+                  clip-path: circle(42%);
+        }
+  
+  .horizontal-friends-list > figure > figcaption {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-weight: 500;
+      }
+  

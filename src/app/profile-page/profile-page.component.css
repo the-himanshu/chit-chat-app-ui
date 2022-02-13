@@ -61,7 +61,7 @@ a {
   height: 90px;
   border-radius: 50%;
   border: 1px solid #d8d8d8;
-  background: center/125% no-repeat;
+  background: center/100% no-repeat;
 }
 .stats__data {
   display: flex;

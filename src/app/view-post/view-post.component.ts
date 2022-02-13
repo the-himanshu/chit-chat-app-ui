@@ -17,6 +17,9 @@ export class ViewPostComponent implements OnInit {
   stringifiedUser: any;
   backendUrl: any = environment.backendUrl;
   authToken: any = localStorage.getItem('authToken');
+  reply: any;
+  showReplies: any;
+  commentReplies: any;
   commentForm = this.formBuilder.group({
     content: '',
   });
@@ -59,7 +62,7 @@ export class ViewPostComponent implements OnInit {
     this.router.navigate(['/mainpage', {user: this.stringifiedUser}]);
   }
 
-  async onSubmit(post: any): Promise<any> {
+  async onSubmit(post: any, parentId: string | null): Promise<any> {
     console.warn('Your order has been submitted', this.commentForm.value);
     axios
       .post(
@@ -67,6 +70,7 @@ export class ViewPostComponent implements OnInit {
         {
           postId: post.id,
           content: this.commentForm.value.content,
+          parentCommentId: parentId
         },
         {
           headers: {
@@ -84,5 +88,20 @@ export class ViewPostComponent implements OnInit {
           { error: err, errorCode: err.slice(-3) },
         ]);
       });
+  }
+
+  async addCommentReplyInputField(commentId: string | null): Promise<any> {
+    this.reply = commentId;
+  }
+
+  async viewCommentReplies(commentId: string | null): Promise<any> {
+    this.showReplies = commentId;
+    axios.get(`${this.backendUrl}/comments?parentCommentId=${commentId}`, {
+      headers: {
+        Authorization: this.authToken
+      }
+    }).then((res) => {
+      this.commentReplies = res.data;
+    })
   }
 }

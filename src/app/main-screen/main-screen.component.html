@@ -9,7 +9,10 @@
         <button class="navbar-btn btn btn-custom" (click)="createPost()">
           Create a Post
         </button>
-        <button class="navbar-btn btn btn-custom" (click)="viewProfile()">
+        <button class="navbar-btn btn btn-custom" (click)="addFriends()">
+          Add Friends
+        </button>
+        <button class="navbar-btn btn btn-custom" (click)="viewProfile(user)">
           View Profile
         </button>
         <button class="navbar-btn btn btn-custom" (click)="logout()">
@@ -24,7 +27,7 @@
   <div *ngFor="let post of posts">
     <section>
       <div class="header">
-        <div class="user"><img class='post-profile-image' src="{{ post.user.avatar }}" alt=""><b>{{ post.user.username }}</b></div>
+        <div class="user"><img class='post-profile-image' src="{{ post.user.avatar }}" alt=""><b><a (click)="viewProfile(post.user)">{{ post.user.username }}</a></b></div>
         <div class="param">
           <svg
             aria-label="Plus d’options"

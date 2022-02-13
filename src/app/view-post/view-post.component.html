@@ -1,57 +1,129 @@
 <div *ngIf="stringifiedUser">
   <app-header [user]="stringifiedUser"></app-header>
 </div>
-<div *ngIf='post'>
-<section>
-  <div class="wrapper" style="border-style: 2%;">
-    <div class="left-col">
+<div *ngIf="post">
+  <section>
+    <div class="wrapper" style="border-style: 2%">
+      <div class="left-col">
         <div class="post">
-            <div class="info">
-                <div class="user">
-                    <div class="profile-pic"><img style="height:90%; width:90%; border-radius:50%;" src="{{ post.user.avatar }}" alt=""></div>
-                    <p class="username">{{ post.user.username }}</p>
-                   </div>
-                <img src="" class="options" alt="">
+          <div class="info">
+            <div class="user">
+              <div class="profile-pic">
+                <img
+                  style="height: 90%; width: 90%; border-radius: 50%"
+                  src="{{ post.user.avatar }}"
+                  alt=""
+                />
+              </div>
+              <p class="username">{{ post.user.username }}</p>
             </div>
-            <div class="post-content">
-              <p class="description"><span>{{ post.user.username }}</span>{{ post.content }}</p>
-              <p class="post-time">{{ post.createdAt }}</p>
-              <p class="likes">{{ post.likes }} Likes</p>
+            <img src="" class="options" alt="" />
+          </div>
+          <div class="post-content">
+            <p class="description">
+              <span>{{ post.user.username }}</span
+              >{{ post.content }}
+            </p>
+            <p class="post-time">{{ post.createdAt }}</p>
+            <p class="likes">{{ post.likes }} Likes</p>
+          </div>
+          <p style="margin-left: 4%">
+            <b>Total Comments: {{ post.commentCount }}</b>
+          </p>
+          <button
+            class="btn btn-success"
+            id="home"
+            style="margin-left: 2%"
+            (click)="GoHome(post.user)"
+          >
+            Go Home
+          </button>
+          <div class="comment-wrapper">
+            <div class="commentBoxfloat">
+              <form
+                id="cmnt"
+                [formGroup]="commentForm"
+                (ngSubmit)="onSubmit(post, null)"
+              >
+                <fieldset>
+                  <div class="form_grp">
+                    <textarea
+                      id="userCmnt"
+                      formControlName="content"
+                      placeholder="Write your comment here. You can Edit and Delete options. Just Hover in Your comment, you see the both buttons"
+                    ></textarea>
+                  </div>
+                  <div class="form_grp">
+                    <button class="btn btn-primary" type="submit" id="submit">
+                      Submit
+                    </button>
+                  </div>
+                </fieldset>
+              </form>
             </div>
-            <p style="margin-left: 4%"><b>Total Comments: {{ post.commentCount }}</b></p>
-            <button class="btn btn-success" id="home" style="margin-left: 2%;" (click)="GoHome(post.user)">Go Home</button>
-            <div class="comment-wrapper">
-                <div class="commentBoxfloat">
-                  <form id="cmnt" [formGroup]="commentForm" (ngSubmit)="onSubmit(post)">
-                    <fieldset>
-                      <div class="form_grp">
-                        <textarea id="userCmnt" formControlName="content" placeholder="Write your comment here. You can Edit and Delete options. Just Hover in Your comment, you see the both buttons"></textarea>        
-                      </div>
-                      <div class="form_grp">
-                      <button class="btn btn-primary" type="submit" id="submit">Submit</button>
-                    </div>
-                  </fieldset>
-                </form>
-
-                 </div>
-
-            </div>
-            <div *ngFor="let comment of post.comments">
+          </div>
+          <div *ngFor="let comment of post.comments">
             <div class="comment-content">
               <h6 class="likes">{{ comment.creatorName }}</h6>
-              <p><span>{{ comment.content }}</span><br><i>{{ comment.likes }} Likes</i></p>
+              <p>
+                <span>{{ comment.content }}</span>
+              </p>
+              <p>
+                <a
+                  style="color: blue; font-style: italic"
+                  (click)="addCommentReplyInputField(comment.id)"
+                  >Reply</a
+                ><span *ngIf="reply == comment.id"
+                  ><div class="wrapper">
+                    <form
+                      class="form-group"
+                      [formGroup]="commentForm"
+                      (ngSubmit)="onSubmit(post, comment.id)"
+                    >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="content"
+                        placeholder="Add a reply"
+                      />
+                      <button
+                        type="submit"
+                        class="btn btn-success"
+                        style="margin-left: 2%"
+                      >
+                        Add a reply
+                      </button>
+                    </form>
+                  </div></span
+                >
+              </p>
+              <p *ngIf="comment.replies">
+                <a (click)="viewCommentReplies(comment.id)"
+                  ><b>View {{ comment.replies }} Replies</b></a
+                >
+                <span *ngIf="showReplies == comment.id"
+                  ><div *ngIf="commentReplies" class="wrapper">
+                    <div *ngFor="let reply of commentReplies">
+                      <b><i>{{ reply.creatorName }}</i></b> : {{ reply.content }}
+                    </div>
+                  </div>
+                  <div *ngIf="!commentReplies" class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div></span
+                >
+              </p>
               <p class="post-time">{{ comment.createdAt }}</p>
-          </div>
+            </div>
           </div>
         </div>
+      </div>
     </div>
-</div>
-</section>
-<!-- CSS only -->
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-  crossorigin="anonymous"
-/>
+  </section>
+  <!-- CSS only -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+  />
 </div>

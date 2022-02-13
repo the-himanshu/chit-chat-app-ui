@@ -154,10 +154,14 @@ button.navbar-btn{
 	margin-top: 8px;
 } 
 
+.navbar-header {
+  width: 100%;
+}
+
 .btn-custom {
 	color: rgb(0, 0, 0);
   font-weight: bold;
-  font-size: 120%;
+  font-size: 100%;
   font-style:inherit;
 
 }
@@ -171,10 +175,9 @@ button.navbar-btn{
 
 .btn.btn-custom {
   color: black;
-	width: 30%;
+	width: 25%;
 	height: 10%;
 	border-radius: 20px;
-  font-weight: 500;
 	color: black;
 	font-family: 'Open Sans', sans-serif;
   text-decoration: solid;

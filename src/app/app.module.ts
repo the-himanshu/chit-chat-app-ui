@@ -15,6 +15,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { AddFriendsComponent } from './add-friends/add-friends.component';
+import { FriendRequestsComponent } from './friend-requests/friend-requests.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     CreatePostComponent,
     ViewPostComponent,
     ProfilePageComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AddFriendsComponent,
+    FriendRequestsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +43,11 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
       { path: 'login', component: LoginPageComponent },
       { path: 'mainpage', component: MainScreenComponent, data: {user: 'user'} },
       { path: 'error', component: ShowErrorComponent, data: {error: 'error here', errorCode: '404'} },
+      { path: 'addFriends', component: AddFriendsComponent, data: {user: 'user'}},
+      { path: 'friendRequests', component: FriendRequestsComponent, data: {user: 'user'}},
       { path: 'post/:postId', component: ViewPostComponent, data: {user: 'user'} },
-      { path: 'profile/:profileId', component: ProfilePageComponent, data: {currentUser: 'user info'} },
+      { path: 'friendList/:profileId', component: FriendRequestsComponent, data: {user: 'user'} },
+      { path: 'profile/:profileId', component: ProfilePageComponent, data: {currentUser: 'user info', user: 'user info'} },
       { path: 'profile/editProfile/:profileId', component: EditProfileComponent, data: {currentUser: 'user info'} },
     ])
   ],

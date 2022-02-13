@@ -65,11 +65,15 @@ export class MainScreenComponent implements OnInit {
     this.router.navigate(['/post', id, { user: JSON.stringify(this.user) }]);
   }
 
-  async viewProfile(): Promise<any> {
+  async addFriends(): Promise<any> {
+    this.router.navigate(['/addFriends', { user: JSON.stringify(this.user) }]);
+  }
+
+  async viewProfile(user: any): Promise<any> {
     this.router.navigate([
       '/profile',
-      this.user.id,
-      { currentUser: JSON.stringify(this.user) },
+      user.id,
+      { currentUser: JSON.stringify(this.user), user: JSON.stringify(user) },
     ]);
   }
 

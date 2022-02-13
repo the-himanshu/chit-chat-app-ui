@@ -1,0 +1,119 @@
+<app-header [user]="currentUser"></app-header>
+<div *ngIf="!friendsAndRequestsData" class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div *ngIf="friendsAndRequestsData">
+<div class="container">
+  <div class="box">
+    <input
+      type="radio"
+      class="tab-toggle"
+      name="tab-toggle"
+      id="tab1"
+      checked
+    />
+    <input type="radio" class="tab-toggle" name="tab-toggle" id="tab2" />
+    <input type="radio" class="tab-toggle" name="tab-toggle" id="tab3" />
+
+    <ul class="tab-list">
+      <li class="tab-item">
+        <label class="tab-trigger" for="tab1">Friends</label>
+      </li>
+      <li class="tab-item">
+        <label class="tab-trigger" for="tab2">Received Requests</label>
+      </li>
+      <li class="tab-item">
+        <label class="tab-trigger" for="tab3">Sent Requests</label>
+      </li>
+    </ul>
+
+    <div class="tab-container">
+      <div class="tab-content" for="tab1">
+        <div
+          style="display: inline-flex; margin-right: 4%"
+          *ngFor="let element of friendsAndRequestsData.friendsDetails"
+        >
+          <img
+            src="{{ element.avatar }}"
+            height="100"
+            width="100"
+            alt="Image of woman"
+          />
+          <p id="info" style="margin-right: 10%; margin-top: 10%">
+            <b>{{ element.username }}</b> <br />
+          </p>
+          <div id="button-block">
+            <div
+              class="btn btn-danger"
+              (click)="deleteRequest(element.requestId)"
+            >
+              Delete
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" for="tab2">
+        <div
+          style="display: inline-flex; margin-right: 4%"
+          *ngFor="let element of friendsAndRequestsData.receivedRequestsDetails"
+        >
+          <img
+            src="{{ element.avatar }}"
+            height="100"
+            width="100"
+            alt="Image of woman"
+          />
+          <p id="info" style="margin-right: 10%; margin-top: 10%">
+            <b>{{ element.username }}</b> <br />
+          </p>
+          <div id="button-block">
+            <div
+              class="btn btn-primary"
+              style="margin: 1%"
+              (click)="confirmRequest(element.requestId, element.id)"
+            >
+              Confirm
+            </div>
+            <div
+              class="btn btn-danger"
+              (click)="deleteRequest(element.requestId)"
+            >
+              Delete
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content">
+        <div
+          style="display: inline-flex; margin-right: 4%"
+          *ngFor="let element of friendsAndRequestsData.sentRequestsDetails"
+        >
+          <img
+            src="{{ element.avatar }}"
+            height="100"
+            width="100"
+            alt="Image of woman"
+          />
+          <p id="info" style="margin-right: 10%; margin-top: 10%">
+            <b>{{ element.username }}</b> <br />
+          </p>
+          <div id="button-block">
+            <div
+              class="btn btn-danger"
+              (click)="deleteRequest(element.requestId)"
+            >
+              Delete
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+  />
+</div>
