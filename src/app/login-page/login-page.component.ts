@@ -14,6 +14,8 @@ export class LoginPageComponent implements OnInit {
     email: '',
     password: '',
   });
+  errorBoolean = false;
+  errorString = '';
 
   constructor(private formBuilder: FormBuilder, private router: Router) {}
 
@@ -31,14 +33,16 @@ export class LoginPageComponent implements OnInit {
       .then((res) => {
         if (res.status == 201) {
           localStorage.setItem('authToken', res.data.accessToken);
-          localStorage.setItem('1', res.data.user);
           this.loginForm.reset();
           this.router.navigate(['/mainpage', {user: JSON.stringify(res.data.user)}]);
         }
       })
       .catch((err) => {
-        err = err.toString()
-        this.router.navigate(['/error', {error: err, errorCode: err.slice(-3)}]);
+        this.errorBoolean = true;
+        this.errorString = err.message;
+        setTimeout(() => {
+          this.errorBoolean = false;
+        }, 10000)
       });
   }
 }
